@@ -26,7 +26,7 @@ Login Page/
 │ └── style.css # Stylesheet (CSS)
 │
 └── js/
-└── script.js # JavaScript logic (Toast notifications, Login/Signup)
+  └── script.js # JavaScript logic (Toast notifications, Login/Signup)
 ```
 
 ---
