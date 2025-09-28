@@ -17,14 +17,16 @@ This project includes a login page and a profile page, created to practice front
 ## 📂 Project Structure
 ```
 Login Page/
-│── index.html        # Login page
-│── profile.html      # Profile page
+│── index.html # Main login / signup page
+│
+├── profile/
+│ └── index.html # User profile page (after successful login)
 │
 ├── css/
-│   └── style.css     # Styles
+│ └── style.css # Stylesheet (CSS)
 │
 └── js/
-    └── script.js     # JavaScript logic
+└── script.js # JavaScript logic (Toast notifications, Login/Signup)
 ```
 
 ---
