@@ -1,5 +1,9 @@
-// نمایش پیام toast
+let isToastActive = false;
+
 function showToast(message, type = "info", duration = 3000) {
+  if (isToastActive) return;
+  isToastActive = true;
+
   let toast = document.createElement("div");
   toast.className = `toast ${type}`;
   toast.textContent = message;
@@ -10,39 +14,37 @@ function showToast(message, type = "info", duration = 3000) {
     toast.style.opacity = "0";
     setTimeout(() => {
       toast.remove();
+      isToastActive = false; 
     }, 500);
   }, duration);
 }
 
-// تغییر فرم فعال
 function showForm(formName) {
   document.querySelectorAll('.form').forEach(f => f.classList.remove('active'));
   document.getElementById(formName + 'Form').classList.add('active');
 }
 
-// هندل کردن ورود
-document.getElementById('loginForm').addEventListener('submit', function(e) {
+const handleLogin = (e) => {
   e.preventDefault();
-  const email = this.email.value;
-  const password = this.password.value;
+  const email = e.target.email.value;
+  const password = e.target.password.value;
 
   const user = JSON.parse(localStorage.getItem('user'));
 
   if (user && user.email === email && user.password === password) {
     showToast("ورود موفق!", "success");
-    setTimeout(() => window.location.href = "profile.html", 1000);
+    setTimeout(() => window.location.href = "profile/index.html", 1000);
   } else {
     showToast("ایمیل یا رمز عبور اشتباه است. ابتدا ثبت‌نام کنید.", "error");
   }
-});
+};
 
-// ثبت‌نام
-document.getElementById('signupForm').addEventListener('submit', function(e) {
+const handleSignup = (e) => {
   e.preventDefault();
-  const name = this.name.value;
-  const email = this.email.value;
-  const password = this.password.value;
-  const phone = this.phone.value;
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  const phone = e.target.phone.value;
 
   if(password.length < 6){
     showToast("رمز عبور باید حداقل ۶ کاراکتر باشد.", "warning");
@@ -54,11 +56,14 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 
   showToast("ثبت‌نام موفق! اکنون می‌توانید وارد شوید.", "success");
   showForm('login');
-});
+};
 
-// فراموشی رمز عبور
-document.getElementById('forgotForm').addEventListener('submit', function(e) {
+const handleForgot = (e) => {
   e.preventDefault();
   showToast("لینک بازیابی به ایمیل شما ارسال شد (دمو).", "info");
   showForm('login');
-});
+};
+
+document.getElementById('loginForm').addEventListener('submit', handleLogin);
+document.getElementById('signupForm').addEventListener('submit', handleSignup);
+document.getElementById('forgotForm').addEventListener('submit', handleForgot);
