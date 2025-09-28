@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود / ثبت‌نام</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- فونت فارسی -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: 'Vazirmatn', sans-serif; background: #121212; color: #eee;">
+
+  <!-- لودر -->
+  <div id="loader" class="loader-container">
+    <div class="loader-inner">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <div class="login-box" style="
+      background: rgba(30,30,30,0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      max-width: 380px;
+      margin: 80px auto;
+      ">
+    <!-- فرم ورود -->
+    <form id="loginForm" class="form active">
+      <h2 style="color:#00adb5; margin-bottom:20px;">ورود</h2>
+      <div class="user-box">
+        <input type="email" name="email" required>
+        <label>ایمیل</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="password" required>
+        <label>رمز عبور</label>
+      </div>
+      <button type="submit" class="btn">ورود</button>
+      <p class="switch">حساب کاربری ندارید؟ <a href="#" onclick="showForm('signup')">ثبت‌نام</a></p>
+      <p class="switch"><a href="#" onclick="showForm('forgot')">فراموشی رمز عبور</a></p>
+    </form>
+
+    <!-- فرم ثبت‌نام -->
+    <form id="signupForm" class="form">
+      <h2 style="color:#00adb5; margin-bottom:20px;">ثبت‌نام</h2>
+      <div class="user-box">
+        <input type="text" name="name" required>
+        <label>نام</label>
+      </div>
+      <div class="user-box">
+        <input type="email" name="email" required>
+        <label>ایمیل</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="password" required>
+        <label>رمز عبور</label>
+      </div>
+      <div class="user-box">
+        <input type="tel" name="phone" required>
+        <label>شماره تلفن</label>
+      </div>
+      <button type="submit" class="btn">ثبت‌نام</button>
+      <p class="switch">حساب کاربری دارید؟ <a href="#" onclick="showForm('login')">ورود</a></p>
+    </form>
+
+    <!-- فرم فراموشی رمز عبور -->
+    <form id="forgotForm" class="form">
+      <h2 style="color:#00adb5; margin-bottom:20px;">بازیابی رمز عبور</h2>
+      <div class="user-box">
+        <input type="email" name="email" required>
+        <label>ایمیل</label>
+      </div>
+      <button type="submit" class="btn">ارسال لینک بازیابی</button>
+      <p class="switch"><a href="#" onclick="showForm('login')">بازگشت به ورود</a></p>
+    </form>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
